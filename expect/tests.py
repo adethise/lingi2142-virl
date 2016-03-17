@@ -24,18 +24,19 @@ def test_ping(telnet_info, params):
 
     print('Testing ping from connexion telnet://%s:%s' % telnet_info)
 
+    child = pexpect.spawn('telnet %s %s' % telnet_info, timeout=1)
+
     try:
-        # No actual testing yet ! Only a skeleton
-        #child = pexpect.spawn('telnet %s %s' % telnet_info)
-        #child.expect('?')
+        index = child.expect(['uefquqebqoub'])
 
         print('Connexion established...')
 
         for ip in params:
             print('\tPinging ip %s... ' % ip, end='')
 
-            #child.sendline('ping %s' % ip)
-            #child.expect('? ip success')
+            child.sendline('ping %s' % ip)
+            index = child.expect(['ip success'])
+
 
             print('Success')
 
@@ -46,9 +47,10 @@ def test_ping(telnet_info, params):
 
         return True
 
-    except:
-        print('Test failed !')
+    except (pexpect.EOF, pexpect.TIMEOUT):
+        print('Test failed')
         return False
+        
 
 
 connexions = [(telnet_ip, telnet_port) for telnet_port in telnet_ports]
