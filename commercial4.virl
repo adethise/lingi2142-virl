@@ -1011,7 +1011,7 @@ end
         </extensions>
         <interface id="0" name="GigabitEthernet0/1" ipv4="10.0.128.6" netPrefixLenV4="30"/>
     </node>
-    <node name="Ext3" type="SIMPLE" subtype="IOSv" location="284,385" ipv4="192.168.0.13">
+    <node name="Ext3" type="SIMPLE" subtype="IOSv" location="284,385" ipv4="192.168.0.8">
         <extensions>
             <entry key="AutoNetkit.ASN" type="Integer">4</entry>
             <entry key="config" type="string">! IOS Config generated on 2016-03-13 13:05
@@ -1064,7 +1064,7 @@ cdp run
 !
 interface Loopback0
   description Loopback
-  ip address 192.168.0.13 255.255.255.255
+  ip address 192.168.0.8 255.255.255.255
 !
 interface GigabitEthernet0/0
   description OOB Management
@@ -1089,7 +1089,7 @@ router bgp 4
   neighbor 10.0.0.25 remote-as 1
   neighbor 10.0.0.25 description eBGP to E2
   neighbor 10.0.0.25 next-hop-self
-  network 192.168.0.13 mask 255.255.255.255
+  network 192.168.0.8 mask 255.255.255.255
 !
 end
 </entry>
