@@ -50,7 +50,7 @@ def test_ping(telnet_info, params):
     except (pexpect.EOF, pexpect.TIMEOUT):
         print('Test failed')
         return False
-        
+
 
 
 connexions = [(telnet_ip, telnet_port) for telnet_port in telnet_ports]
