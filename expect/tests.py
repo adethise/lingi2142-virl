@@ -7,12 +7,9 @@ import sys
 if len(sys.argv) != 3:
     print('USAGE:    %s IP PORT_RANGE' % sys.argv[0])
     print('EXAMPLE:  %s %s %s' % (sys.argv[0], '172.156.58.2', '17000-17010'))
-    exit()
+else:
+    __main__(sys.argv)
 
-
-telnet_ip = sys.argv[1]
-(telnet_port_start, telnet_port_end) = map(int, sys.argv[2].split('-'))
-telnet_ports = map(str, range(telnet_port_start, telnet_port_end+1))
 
 
 def test_ping(telnet_info, params):
@@ -52,30 +49,34 @@ def test_ping(telnet_info, params):
         return False
         
 
+def __main__(argv):
+    telnet_ip = argv[1]
+    (telnet_port_start, telnet_port_end) = map(int, argv[2].split('-'))
+    telnet_ports = map(str, range(telnet_port_start, telnet_port_end+1))
 
-connexions = [(telnet_ip, telnet_port) for telnet_port in telnet_ports]
-routers = ['192.168.0.%d' % d for d in range(10)]
+    connexions = [(telnet_ip, telnet_port) for telnet_port in telnet_ports]
+    routers = ['192.168.0.%d' % d for d in range(10)]
 
-##############
-# Test: ping #
-##############
+    ##############
+    # Test: ping #
+    ##############
 
-print()
-print('##########################')
-print('# Test: ping each server #')
-print('##########################')
-print()
+    print()
+    print('##########################')
+    print('# Test: ping each server #')
+    print('##########################')
+    print()
 
-success= True
-for connexion in connexions:
-    success= test_ping(connexion, routers) and success
+    success= True
+    for connexion in connexions:
+        success= test_ping(connexion, routers) and success
 
-if success:
-    print('PING: Test successful')
-else:
-    print('PING: One or more tests failed')
-del success
+    if success:
+        print('PING: Test successful')
+    else:
+        print('PING: One or more tests failed')
+    del success
 
-#############
-# Test: ... #
-#############
+    #############
+    # Test: ... #
+    #############
