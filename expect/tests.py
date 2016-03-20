@@ -86,6 +86,7 @@ def test_ping(telnet_info, params):
         print('Test failed')
         return False
         
+
 ###############################################################################
 
 
