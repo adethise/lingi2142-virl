@@ -1,39 +1,39 @@
 telnet_ip = '172.16.11.254'
 
 # ROUTER NAMES
-C1      = "C1"
-C2      = "C2"
-C3      = "C3"
-E1      = "E1"
-E2      = "E2"
-E3      = "E3"
-EXT1    = "EXT1"
-EXT2    = "EXT2"
-EXT3    = "EXT3"
+C1      = 'C1'
+C2      = 'C2'
+C3      = 'C3'
+E1      = 'E1'
+E2      = 'E2'
+E3      = 'E3'
+EXT1    = 'Ext1'
+EXT2    = 'Ext2'
+EXT3    = 'Ext3'
 
 # INTERFACE DIRECTIONS
-SOUTH   = "SOUTH"
-NORTH   = "NORTH"
-EAST    = "EAST"
-WEST    = "WEST"
-NW  = "NW"
-NE  = "NE"
-SW  = "SW"
-SE  = "SE"
+SOUTH   = 'SOUTH'
+NORTH   = 'NORTH'
+EAST    = 'EAST'
+WEST    = 'WEST'
+NW  = 'NW'
+NE  = 'NE'
+SW  = 'SW'
+SE  = 'SE'
 
 ############################
 # PORT CHANGE AT EACH STARTUP AND SHOULD UPDATED
 ############################
 telnet_ports = {
-    C1:   17005,
-    C2:   17003,
-    C3:   17000,
-    E1:   17007,
-    E2:   17011,
-    E3:   17009,
-    EXT1: 17017,
-    EXT2: 17015,
-    EXT3: 17017
+    C1:   17006,
+    C2:   17019,
+    C3:   17001,
+    E1:   17023,
+    E2:   17027,
+    E3:   17025,
+    EXT1: 17033,
+    EXT2: 17031,
+    EXT3: 17029
 }
 
 # LOOPBACK IPS
@@ -46,7 +46,7 @@ loopback_ips = {
     E3:   '192.168.0.5',
     EXT1: '192.168.0.7',
     EXT2: '192.168.0.9',
-    EXT3: '192.168.0.13'
+    EXT3: '192.168.0.8'
 }
 
 # INTEFACE IPS
