@@ -572,10 +572,6 @@ router bgp 1
     network 10.0.128.8 mask 255.255.255.252
   exit-address-family
 !
-ip route 10.0.0.0 255.255.255.224 Null0 254
-ip route 10.0.128.0 255.255.255.248 Null0 254
-ip route 10.0.128.8 255.255.255.252 Null0 254
-!
 end
 </entry>
             <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
@@ -703,10 +699,6 @@ router bgp 1
     network 10.0.128.8 mask 255.255.255.252
   exit-address-family
 !
-ip route 10.0.0.0 255.255.255.224 Null0 254
-ip route 10.0.128.0 255.255.255.248 Null0 254
-ip route 10.0.128.8 255.255.255.252 Null0 254
-!
 end
 </entry>
             <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
@@ -829,10 +821,6 @@ router bgp 1
   network 10.0.128.0 mask 255.255.255.248
   network 10.0.128.8 mask 255.255.255.252
  exit-address-family
-!
-ip route 10.0.0.0 255.255.255.224 Null0 254
-ip route 10.0.128.0 255.255.255.248 Null0 254
-ip route 10.0.128.8 255.255.255.252 Null0 254
 !
 end
 </entry>
