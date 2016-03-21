@@ -116,8 +116,8 @@ router bgp 1
   bgp router-id 192.168.0.6
   no synchronization
   neighbor 192.168.0.3 remote-as 1
-  neighbor 192.168.0.3 description Client to RR C2
   neighbor 192.168.0.3 update-source Loopback0
+  neighbor 192.168.0.3 description Client to RR C2
 ! ibgp
 !
 !
@@ -563,6 +563,7 @@ router bgp 1
 ! ebgp
   neighbor 10.0.128.6 remote-as 3
   neighbor 10.0.128.6 description eBGP to Ext2
+  neighbor 10.0.128.6 update-source Loopback0
   neighbor 10.0.128.6 next-hop-self
 
   address-family ipv4
@@ -693,6 +694,7 @@ router bgp 1
     neighbor 192.168.0.3 next-hop-self
 ! ebgp
   neighbor 10.0.0.26 remote-as 4
+  neighbor 10.0.0.26 update-source Loopback0
   neighbor 10.0.0.26 description eBGP to Ext3
   neighbor 10.0.0.26 next-hop-self
 
@@ -821,6 +823,7 @@ router bgp 1
 ! ebgp
   neighbor 10.0.0.2 remote-as 2
   neighbor 10.0.0.2 description eBGP to Ext1
+  neighbor 10.0.0.2 update-source Loopback0
   neighbor 10.0.0.2 next-hop-self
  !
  address-family ipv4
@@ -915,6 +918,7 @@ interface GigabitEthernet0/1
 router bgp 2
   no synchronization
   neighbor 10.0.0.1 remote-as 1
+  neighbor 10.0.0.1 update-source Loopback0
   neighbor 10.0.0.1 description eBGP to E1
   neighbor 10.0.0.1 next-hop-self
   network 192.168.0.7 mask 255.255.255.255
@@ -1000,6 +1004,7 @@ interface GigabitEthernet0/1
 router bgp 3
   no synchronization
   neighbor 10.0.128.5 remote-as 1
+  neighbor 10.0.128.5 update-source Loopback0
   neighbor 10.0.128.5 description eBGP to E3
   neighbor 10.0.128.5 next-hop-self
   network 192.168.0.9 mask 255.255.255.255
@@ -1087,6 +1092,7 @@ interface GigabitEthernet0/1
 router bgp 4
   no synchronization
   neighbor 10.0.0.25 remote-as 1
+  neighbor 10.0.0.25 update-source Loopback0
   neighbor 10.0.0.25 description eBGP to E2
   neighbor 10.0.0.25 next-hop-self
   network 192.168.0.8 mask 255.255.255.255
