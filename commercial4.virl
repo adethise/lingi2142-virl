@@ -890,6 +890,10 @@ line con 0
 !
 cdp run
 !
+interface Loopback0
+  description Loopback
+  ip address 192.168.0.7 255.255.255.255
+!
 interface GigabitEthernet0/0
   description OOB Management
   vrf forwarding Mgmt-intf
@@ -913,7 +917,9 @@ router bgp 2
   neighbor 10.0.0.1 remote-as 1
   neighbor 10.0.0.1 description eBGP to E1
   neighbor 10.0.0.1 next-hop-self
+  network 192.168.0.7 mask 255.255.255.255
   network 10.0.0.2 mask 255.255.255.255
+  network 10.0.10.1 mask 255.255.255.0
 end
 </entry>
             <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
@@ -971,6 +977,10 @@ line con 0
 !
 cdp run
 !
+interface Loopback0
+  description Loopback
+  ip address 192.168.0.9 255.255.255.255
+!
 interface GigabitEthernet0/0
   description OOB Management
   vrf forwarding Mgmt-intf
@@ -994,7 +1004,9 @@ router bgp 3
   neighbor 10.0.128.5 remote-as 1
   neighbor 10.0.128.5 description eBGP to E3
   neighbor 10.0.128.5 next-hop-self
+  network 192.168.0.9 mask 255.255.255.255
   network 10.0.128.6 mask 255.255.255.255
+  network 10.0.10.1 mask 255.255.255.0
 !
 end
 </entry>
@@ -1054,6 +1066,10 @@ line con 0
 cdp run
 !
 !
+interface Loopback0
+  description Loopback
+  ip address 192.168.0.8 255.255.255.255
+!
 interface GigabitEthernet0/0
   description OOB Management
   vrf forwarding Mgmt-intf
@@ -1077,7 +1093,9 @@ router bgp 4
   neighbor 10.0.0.25 remote-as 1
   neighbor 10.0.0.25 description eBGP to E2
   neighbor 10.0.0.25 next-hop-self
+  network 192.168.0.8 mask 255.255.255.255
   network 10.0.0.26 mask 255.255.255.255
+  network 10.0.10.1 mask 255.255.255.0
 !
 end
 </entry>
