@@ -25,6 +25,5 @@ def expect_route(spawn, router_from, router_dst, hops):
     print('Asserting traceroute from %s to %s' % (router_from, router_dst))
     print('Expecting: %s', '-'.join(hops))
     send_traceroute_cmd(spawn, router_dst)
-    for hop in hops:
-        spawn.expect(hop)
+    spawn.expect('.*'.join(hops))
     print('Pass')
