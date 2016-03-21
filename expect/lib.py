@@ -16,8 +16,14 @@ def telnet_to_router(router_name):
     print('Connected to %s' % router_name)
     return spawn
 
-def trace_route(spawn, target_router_name):
-    print('Tracing route to %s' % target_router_name)
-    target_ip = loopback_ips[target_router_name]
+def send_traceroute_cmd(spawn, target_router):
+    target_ip = loopback_ips[target_router]
     spawn.send('traceroute %s\r' % target_ip)
     spawn.expect('VRF info:')
+
+def expect_route(spawn, router_from, router_dst, hops):
+    print('Asserting traceroute from %s to %s' % (router_from, router_dst))
+    print('Expecting: %s', '-'.join(hops))
+    send_traceroute_cmd(spawn, router_dst)
+    spawn.expect('.*'.join(hops))
+    print('Pass')
