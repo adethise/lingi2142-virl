@@ -528,7 +528,7 @@ interface GigabitEthernet0/1
 !
 interface GigabitEthernet0/2
   description to Ext1
-  ip address 10.0.0.1 255.255.255.252
+  ip address 10.1.0.2 255.255.255.252
   cdp enable
   duplex full
   speed auto
@@ -557,13 +557,12 @@ router bgp 10
   network 10.0.0.0 mask 255.255.0.0
  exit-address-family
 !
-ip route 10.1.0.1 255.255.255.255 GigabitEthernet0/2
 ip route 10.0.0.0 255.255.0.0 Null0 254
 end
 </entry>
     </extensions>
     <interface id="0" name="GigabitEthernet0/1" ipv4="10.0.0.6" netPrefixLenV4="30"/>
-    <interface id="1" name="GigabitEthernet0/2" ipv4="10.0.0.1" netPrefixLenV4="30"/>
+    <interface id="1" name="GigabitEthernet0/2" ipv4="10.1.0.2" netPrefixLenV4="30"/>
 </node>
 
 <!--
@@ -654,7 +653,7 @@ interface GigabitEthernet0/2
 !
 interface GigabitEthernet0/3
   description to Ext3
-  ip address 10.0.0.25 255.255.255.252
+  ip address 10.3.0.2 255.255.255.252
   cdp enable
   duplex full
   speed auto
@@ -688,7 +687,6 @@ router bgp 10
     network 10.0.0.0 mask 255.255.0.0
   exit-address-family
 !
-ip route 10.2.0.1 255.255.255.255 GigabitEthernet0/3
 ip route 10.0.0.0 255.255.0.0 Null0 254
 end
 </entry>
@@ -701,7 +699,7 @@ end
     </extensions>
     <interface id="0" name="GigabitEthernet0/1" ipv4="10.0.0.10" netPrefixLenV4="30"/>
     <interface id="1" name="GigabitEthernet0/2" ipv4="10.0.0.22" netPrefixLenV4="30"/>
-    <interface id="2" name="GigabitEthernet0/3" ipv4="10.0.0.25" netPrefixLenV4="30"/>
+    <interface id="2" name="GigabitEthernet0/3" ipv4="10.3.0.2" netPrefixLenV4="30"/>
 </node>
 
 <!--
@@ -792,7 +790,7 @@ interface GigabitEthernet0/2
 !
 interface GigabitEthernet0/3
   description to Ext2
-  ip address 10.0.128.5 255.255.255.252
+  ip address 10.2.0.2 255.255.255.252
   cdp enable
   duplex full
   speed auto
@@ -826,7 +824,6 @@ router bgp 10
     network 10.0.0.0 mask 255.255.0.0
   exit-address-family
   !
-ip route 10.2.0.1 255.255.255.255 GigabitEthernet0/3
 ip route 10.0.0.0 255.255.0.0 Null0 254
 end
 </entry>
@@ -839,7 +836,7 @@ end
     </extensions>
     <interface id="0" name="GigabitEthernet0/1" ipv4="10.0.0.30" netPrefixLenV4="30"/>
     <interface id="1" name="GigabitEthernet0/2" ipv4="10.0.128.10" netPrefixLenV4="30"/>
-    <interface id="2" name="GigabitEthernet0/3" ipv4="10.0.128.5" netPrefixLenV4="30"/>
+    <interface id="2" name="GigabitEthernet0/3" ipv4="10.2.0.2" netPrefixLenV4="30"/>
 </node>
 
 <!--
@@ -914,7 +911,7 @@ interface GigabitEthernet0/0
 !
 interface GigabitEthernet0/1
   description to E1
-  ip address 10.1.0.1 255.255.255.255
+  ip address 10.1.0.1 255.255.255.252
   cdp enable
   duplex full
   speed auto
@@ -922,14 +919,13 @@ interface GigabitEthernet0/1
 !
 router bgp 1
   no synchronization
-  neighbor 10.0.0.1 remote-as 10
-  neighbor 10.0.0.1 description eBGP to E1
-  neighbor 10.0.0.1 next-hop-self
-  network 10.1.0.1 mask 255.255.255.255
+  neighbor 10.1.0.2 remote-as 10
+  neighbor 10.1.0.2 description eBGP to E1
+  neighbor 10.1.0.2 next-hop-self
+  network 10.1.0.1 mask 255.255.255.252
   network 192.168.0.7 mask 255.255.255.255
   network 10.4.0.0 mask 255.255.0.0
 !
-ip route 10.0.0.1 255.255.255.255 GigabitEthernet0/1
 ip route 10.4.0.0 255.255.0.0 Null0 254
 end
 </entry>
@@ -1017,7 +1013,7 @@ interface GigabitEthernet0/0
 !
 interface GigabitEthernet0/1
   description to E3
-  ip address 10.2.0.1 255.255.255.255
+  ip address 10.2.0.1 255.255.255.252
   cdp enable
   duplex full
   speed auto
@@ -1025,14 +1021,13 @@ interface GigabitEthernet0/1
 !
 router bgp 2
   no synchronization
-  neighbor 10.0.128.5 remote-as 10
-  neighbor 10.0.128.5 description eBGP to E3
-  neighbor 10.0.128.5 next-hop-self
-  network 10.2.0.1 mask 255.255.255.255
+  neighbor 10.2.0.2 remote-as 10
+  neighbor 10.2.0.2 description eBGP to E3
+  neighbor 10.2.0.2 next-hop-self
+  network 10.2.0.1 mask 255.255.255.252
   network 192.168.0.9 mask 255.255.255.255
   network 10.4.0.0 mask 255.255.0.0
 !
-ip route 10.0.128.5 255.255.255.255 GigabitEthernet0/1
 ip route 10.4.0.0 255.255.0.0 Null0 254
 end
 </entry>
@@ -1121,7 +1116,7 @@ interface GigabitEthernet0/0
 !
 interface GigabitEthernet0/1
   description to E2
-  ip address 10.1.0.3 255.255.255.255
+  ip address 10.3.0.1 255.255.255.252
   cdp enable
   duplex full
   speed auto
@@ -1129,21 +1124,20 @@ interface GigabitEthernet0/1
 !
 router bgp 3
   no synchronization
-  neighbor 10.0.0.25 remote-as 10
-  neighbor 10.0.0.25 description eBGP to E2
-  neighbor 10.0.0.25 next-hop-self
-  network 10.1.0.3 mask 255.255.255.255
+  neighbor 10.3.0.2 remote-as 10
+  neighbor 10.3.0.2 description eBGP to E2
+  neighbor 10.3.0.2 next-hop-self
+  network 10.3.0.1 mask 255.255.255.252
   network 192.168.0.8 mask 255.255.255.255
   network 10.4.0.0 mask 255.255.0.0
 !
-ip route 10.0.0.25 255.255.255.255 GigabitEthernet0/1
 ip route 10.4.0.0 255.255.0.0 Null0 254
 end
 </entry>
         <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
         <entry key="Auto-generate config" type="Boolean">false</entry>
     </extensions>
-    <interface id="0" name="GigabitEthernet0/1" ipv4="10.1.0.3" netPrefixLenV4="30"/>
+    <interface id="0" name="GigabitEthernet0/1" ipv4="10.3.0.1" netPrefixLenV4="30"/>
 </node>
 
 <!--
