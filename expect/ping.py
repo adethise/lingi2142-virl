@@ -1,19 +1,12 @@
 #!/usr/bin/python3
 
 import pexpect
-import sys
+
+from config import *
 
 
-def __main__(argv):
-    telnet_ip = argv[1]
-    telnet_ports = argv[2].split(',')
-
-    connexions = [(telnet_ip, telnet_port) for telnet_port in telnet_ports]
-    routers = ['192.168.0.%d' % d for d in range(1, 10)]
-
-    ##############
-    # Test: ping #
-    ##############
+def __main__():
+    connexions = [(telnet_ip, telnet_ports[n], n) for n in sorted(telnet_ports.keys())]
 
     print()
     print('##########################')
@@ -23,17 +16,13 @@ def __main__(argv):
 
     success= True
     for connexion in connexions:
-        success= test_ping(connexion, routers) and success
+        success= test_ping(connexion, loopback_ips) and success
 
     if success:
         print('PING: Test successful')
     else:
         print('PING: One or more tests failed')
     del success
-
-    #############
-    # Test: ... #
-    #############
 
 
 def test_ping(telnet_info, params):
@@ -43,10 +32,10 @@ def test_ping(telnet_info, params):
     @param params = list of ips to ping
     """
 
-    print('Testing ping from connexion telnet://%s:%s' % telnet_info)
+    print('Testing ping from connexion telnet://%s:%s (%s)' % telnet_info)
 
-    (telnet_ip, telnet_port) = telnet_info
-    child = pexpect.spawn('telnet %s %s' % telnet_info)
+    (telnet_ip, telnet_port, name) = telnet_info
+    child = pexpect.spawn('telnet %s %s' % (telnet_ip, telnet_port))
 
     error = 0
 
@@ -58,12 +47,12 @@ def test_ping(telnet_info, params):
 
         print('Connexion established...')
 
-        for ip in params:
+        for n in sorted(params.keys()):
             child.expect([r'[EC(Ext)]\d>']) # Waiting for prompt
 
-            print('\tPinging ip %s... ' % ip, end='')
+            print(('\tPinging ip %s (%s)... ' % (params[n], n)).ljust(41), end='')
 
-            child.sendline('ping %s' % ip)
+            child.sendline('ping %s' % params[n])
             child.expect([r'Success rate is '])
             child.expect([r' '])
             rate = int(child.before) # Get the success percentage
@@ -87,12 +76,5 @@ def test_ping(telnet_info, params):
         return False
         
 
-###############################################################################
 
-
-if len(sys.argv) != 3:
-    print('USAGE:    %s IP PORT[,PORT...]' % sys.argv[0])
-    print('EXAMPLE:  %s %s %s' % (sys.argv[0], '172.156.58.2', '17000,17002,17012'))
-else:
-    __main__(sys.argv)
-
+__main__()
