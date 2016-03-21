@@ -23,7 +23,7 @@ Y88b  d88P   888
 "Y8888P"  8888888
 -->
 
-<node name="C1" type="SIMPLE" subtype="IOSv" location="312,223" ipv4="192.168.0.2">
+<node name="C1" type="SIMPLE" subtype="IOSv" location="312,223" ipv4="192.168.0.1">
     <extensions>
         <entry key="config" type="string">! IOS Config generated on 2016-03-13 13:05
 
@@ -74,7 +74,7 @@ cdp run
 !
 interface Loopback0
   description Loopback
-  ip address 192.168.0.2 255.255.255.255
+  ip address 192.168.0.1 255.255.255.255
 !
 interface GigabitEthernet0/0
   description OOB Management
@@ -123,7 +123,7 @@ interface GigabitEthernet0/4
   no shutdown
 !
 router ospf 1
-  network 192.168.0.2 0.0.0.0 area 0
+  network 192.168.0.1 0.0.0.0 area 0
   log-adjacency-changes
   passive-interface Loopback0
   network 10.0.0.4 0.0.0.3 area 0
@@ -132,24 +132,24 @@ router ospf 1
   network 10.0.0.8 0.0.0.3 area 0
 !
 router bgp 10
-  bgp router-id 192.168.0.2
+  bgp router-id 192.168.0.1
   no synchronization
   ! ibgp
-  neighbor 192.168.0.3 remote-as 10
-  neighbor 192.168.0.3 description iBGP peer C2
-  neighbor 192.168.0.3 update-source Loopback0
-  neighbor 192.168.0.1 remote-as 10
-  neighbor 192.168.0.1 route-reflector-client
-  neighbor 192.168.0.1 description iBGP client E1
-  neighbor 192.168.0.1 update-source Loopback0
+  neighbor 192.168.0.2 remote-as 10
+  neighbor 192.168.0.2 description iBGP peer C2
+  neighbor 192.168.0.2 update-source Loopback0
   neighbor 192.168.0.4 remote-as 10
   neighbor 192.168.0.4 route-reflector-client
-  neighbor 192.168.0.4 description iBGP client E2
+  neighbor 192.168.0.4 description iBGP client E1
   neighbor 192.168.0.4 update-source Loopback0
   neighbor 192.168.0.5 remote-as 10
   neighbor 192.168.0.5 route-reflector-client
-  neighbor 192.168.0.5 description iBGP client E3
+  neighbor 192.168.0.5 description iBGP client E2
   neighbor 192.168.0.5 update-source Loopback0
+  neighbor 192.168.0.6 remote-as 10
+  neighbor 192.168.0.6 route-reflector-client
+  neighbor 192.168.0.6 description iBGP client E3
+  neighbor 192.168.0.6 update-source Loopback0
 !
 end
 </entry>
@@ -178,7 +178,7 @@ Y88b  d88P 888"
 "Y8888P"  888888888
 -->
 
-<node name="C2" type="SIMPLE" subtype="IOSv" location="525,273" ipv4="192.168.0.3">
+<node name="C2" type="SIMPLE" subtype="IOSv" location="525,273" ipv4="192.168.0.2">
     <extensions>
         <entry key="config" type="string">! IOS Config generated on 2016-03-13 13:05
 ! by autonetkit_0.21.4
@@ -228,7 +228,7 @@ cdp run
 !
 interface Loopback0
   description Loopback
-  ip address 192.168.0.3 255.255.255.255
+  ip address 192.168.0.2 255.255.255.255
 !
 interface GigabitEthernet0/0
   description OOB Management
@@ -277,7 +277,7 @@ interface GigabitEthernet0/4
   no shutdown
 !
 router ospf 1
-  network 192.168.0.3 0.0.0.0 area 0
+  network 192.168.0.2 0.0.0.0 area 0
   log-adjacency-changes
   passive-interface Loopback0
   network 10.0.128.0 0.0.0.3 area 0
@@ -286,24 +286,24 @@ router ospf 1
   network 10.0.0.28 0.0.0.3 area 0
 !
 router bgp 10
-  bgp router-id 192.168.0.3
+  bgp router-id 192.168.0.2
   no synchronization
 ! ibgp
-  neighbor 192.168.0.2 remote-as 10
-  neighbor 192.168.0.2 description iBGP peer C1
-  neighbor 192.168.0.2 update-source Loopback0
-  neighbor 192.168.0.4 remote-as 10
-  neighbor 192.168.0.4 route-reflector-client
-  neighbor 192.168.0.4 description iBGP client E2
-  neighbor 192.168.0.4 update-source Loopback0
+  neighbor 192.168.0.1 remote-as 10
+  neighbor 192.168.0.1 description iBGP peer C1
+  neighbor 192.168.0.1 update-source Loopback0
   neighbor 192.168.0.5 remote-as 10
   neighbor 192.168.0.5 route-reflector-client
-  neighbor 192.168.0.5 description iBGP client E3
+  neighbor 192.168.0.5 description iBGP client E2
   neighbor 192.168.0.5 update-source Loopback0
   neighbor 192.168.0.6 remote-as 10
   neighbor 192.168.0.6 route-reflector-client
-  neighbor 192.168.0.6 description iBGP client C3
+  neighbor 192.168.0.6 description iBGP client E3
   neighbor 192.168.0.6 update-source Loopback0
+  neighbor 192.168.0.3 remote-as 10
+  neighbor 192.168.0.3 route-reflector-client
+  neighbor 192.168.0.3 description iBGP client C3
+  neighbor 192.168.0.3 update-source Loopback0
 end
 </entry>
     <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
@@ -331,7 +331,7 @@ Y88b  d88P Y88b  d88P
 "Y8888P"   "Y8888P"
 -->
 
-<node name="C3" type="SIMPLE" subtype="IOSv" location="413,128" ipv4="192.168.0.6">
+<node name="C3" type="SIMPLE" subtype="IOSv" location="413,128" ipv4="192.168.0.3">
     <extensions>
         <entry key="config" type="string">! IOS Config generated on 2016-03-13 13:05
 hostname C3
@@ -377,7 +377,7 @@ cdp run
 !
 interface Loopback0
 description Loopback
-ip address 192.168.0.6 255.255.255.255
+ip address 192.168.0.3 255.255.255.255
 !
 interface GigabitEthernet0/0
   description OOB Management
@@ -417,7 +417,7 @@ interface GigabitEthernet0/3
   no shutdown
 !
 router ospf 1
-  network 192.168.0.6 0.0.0.0 area 0
+  network 192.168.0.3 0.0.0.0 area 0
   log-adjacency-changes
   passive-interface Loopback0
   network 10.0.0.16 0.0.0.3 area 0
@@ -425,11 +425,11 @@ router ospf 1
   network 10.0.128.8 0.0.0.3 area 0
 !
 router bgp 10
-  bgp router-id 192.168.0.6
+  bgp router-id 192.168.0.3
   no synchronization
-  neighbor 192.168.0.3 remote-as 10
-  neighbor 192.168.0.3 description Client to RR C2
-  neighbor 192.168.0.3 update-source Loopback0
+  neighbor 192.168.0.2 remote-as 10
+  neighbor 192.168.0.2 description Client to RR C2
+  neighbor 192.168.0.2 update-source Loopback0
 end
 </entry>
         <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
@@ -453,7 +453,7 @@ end
 8888888888 8888888
 -->
 
-<node name="E1" type="SIMPLE" subtype="IOSv" location="217,182" ipv4="192.168.0.1">
+<node name="E1" type="SIMPLE" subtype="IOSv" location="217,182" ipv4="192.168.0.4">
     <extensions>
         <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
         <entry key="AutoNetkit.IGP" type="String">ospf</entry>
@@ -505,7 +505,7 @@ cdp run
 !
 interface Loopback0
   description Loopback
-  ip address 192.168.0.1 255.255.255.255
+  ip address 192.168.0.4 255.255.255.255
 !
 interface GigabitEthernet0/0
   description OOB Management
@@ -535,19 +535,19 @@ interface GigabitEthernet0/2
   no shutdown
 !
 router ospf 1
-  network 192.168.0.1 0.0.0.0 area 0
+  network 192.168.0.4 0.0.0.0 area 0
   log-adjacency-changes
   passive-interface Loopback0
   network 10.0.0.4 0.0.0.3 area 0
 !
 router bgp 10
-  bgp router-id 192.168.0.1
+  bgp router-id 192.168.0.4
   no synchronization
 ! ibgp
-  neighbor 192.168.0.2 remote-as 10
-  neighbor 192.168.0.2 description iBGP client to C1
-  neighbor 192.168.0.2 update-source Loopback0
-  neighbor 192.168.0.2 next-hop-self
+  neighbor 192.168.0.1 remote-as 10
+  neighbor 192.168.0.1 description iBGP client to C1
+  neighbor 192.168.0.1 update-source Loopback0
+  neighbor 192.168.0.1 next-hop-self
 ! ebgp
   neighbor 10.1.0.1 remote-as 1
   neighbor 10.1.0.1 description eBGP to Ext1
@@ -555,9 +555,11 @@ router bgp 10
  !
  address-family ipv4
   network 10.0.0.0 mask 255.255.0.0
+  network 192.168.0.0 mask 255.255.255.0
  exit-address-family
 !
 ip route 10.0.0.0 255.255.0.0 Null0 254
+ip route 192.168.0.0 255.255.255.0 Null0 254
 end
 </entry>
     </extensions>
@@ -576,7 +578,7 @@ end
 8888888888 888888888
 -->
 
-<node name="E2" type="SIMPLE" subtype="IOSv" location="422,336" ipv4="192.168.0.4">
+<node name="E2" type="SIMPLE" subtype="IOSv" location="422,336" ipv4="192.168.0.5">
     <extensions>
         <entry key="config" type="string">! IOS Config generated on 2016-03-13 13:05
 ! by autonetkit_0.21.4
@@ -621,7 +623,7 @@ cdp run
 !
 interface Loopback0
   description Loopback
-  ip address 192.168.0.4 255.255.255.255
+  ip address 192.168.0.5 255.255.255.255
 !
 interface GigabitEthernet0/0
   description OOB Management
@@ -660,34 +662,36 @@ interface GigabitEthernet0/3
   no shutdown
 !
 router ospf 1
-  network 192.168.0.4 0.0.0.0 area 0
+  network 192.168.0.5 0.0.0.0 area 0
   log-adjacency-changes
   passive-interface Loopback0
   network 10.0.0.8 0.0.0.3 area 0
   network 10.0.0.20 0.0.0.3 area 0
 !
 router bgp 10
-  bgp router-id 192.168.0.4
+  bgp router-id 192.168.0.5
   no synchronization
 ! ibgp
+    neighbor 192.168.0.1 remote-as 10
+    neighbor 192.168.0.1 description iBGP client to C1
+    neighbor 192.168.0.1 update-source Loopback0
+    neighbor 192.168.0.1 next-hop-self
     neighbor 192.168.0.2 remote-as 10
-    neighbor 192.168.0.2 description iBGP client to C1
+    neighbor 192.168.0.2 description iBGP client to C2
     neighbor 192.168.0.2 update-source Loopback0
     neighbor 192.168.0.2 next-hop-self
-    neighbor 192.168.0.3 remote-as 10
-    neighbor 192.168.0.3 description iBGP client to C2
-    neighbor 192.168.0.3 update-source Loopback0
-    neighbor 192.168.0.3 next-hop-self
 ! ebgp
   neighbor 10.3.0.1 remote-as 3
   neighbor 10.3.0.1 description eBGP to Ext3
   neighbor 10.3.0.1 next-hop-self
 
   address-family ipv4
-    network 10.0.0.0 mask 255.255.0.0
+   network 10.0.0.0 mask 255.255.0.0
+   network 192.168.0.0 mask 255.255.255.0
   exit-address-family
-!
-ip route 10.0.0.0 255.255.0.0 Null0 254
+ !
+ ip route 10.0.0.0 255.255.0.0 Null0 254
+ ip route 192.168.0.0 255.255.255.0 Null0 254
 end
 </entry>
         <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
@@ -713,7 +717,7 @@ end
 8888888888 "Y8888P"
 -->
 
-<node name="E3" type="SIMPLE" subtype="IOSv" location="630,189" ipv4="192.168.0.5">
+<node name="E3" type="SIMPLE" subtype="IOSv" location="630,189" ipv4="192.168.0.6">
     <extensions>
         <entry key="config" type="string">! IOS Config generated on 2016-03-13 13:05
 hostname E3
@@ -758,7 +762,7 @@ cdp run
 !
 interface Loopback0
   description Loopback
-  ip address 192.168.0.5 255.255.255.255
+  ip address 192.168.0.6 255.255.255.255
 !
 interface GigabitEthernet0/0
   description OOB Management
@@ -797,34 +801,36 @@ interface GigabitEthernet0/3
   no shutdown
 !
 router ospf 1
-  network 192.168.0.5 0.0.0.0 area 0
+  network 192.168.0.6 0.0.0.0 area 0
   log-adjacency-changes
   passive-interface Loopback0
   network 10.0.0.28 0.0.0.3 area 0
   network 10.0.128.8 0.0.0.3 area 0
 !
 router bgp 10
-  bgp router-id 192.168.0.5
+  bgp router-id 192.168.0.6
   no synchronization
   ! ibgp
+  neighbor 192.168.0.1 remote-as 10
+  neighbor 192.168.0.1 description iBGP client to C1
+  neighbor 192.168.0.1 update-source Loopback0
+  neighbor 192.168.0.1 next-hop-self
   neighbor 192.168.0.2 remote-as 10
-  neighbor 192.168.0.2 description iBGP client to C1
+  neighbor 192.168.0.2 description iBGP client to C2
   neighbor 192.168.0.2 update-source Loopback0
   neighbor 192.168.0.2 next-hop-self
-  neighbor 192.168.0.3 remote-as 10
-  neighbor 192.168.0.3 description iBGP client to C2
-  neighbor 192.168.0.3 update-source Loopback0
-  neighbor 192.168.0.3 next-hop-self
   ! ebgp
   neighbor 10.2.0.1 remote-as 2
   neighbor 10.2.0.1 description eBGP to Ext2
   neighbor 10.2.0.1 next-hop-self
 
   address-family ipv4
-    network 10.0.0.0 mask 255.255.0.0
+   network 10.0.0.0 mask 255.255.0.0
+   network 192.168.0.0 mask 255.255.255.0
   exit-address-family
-  !
-ip route 10.0.0.0 255.255.0.0 Null0 254
+ !
+ ip route 10.0.0.0 255.255.0.0 Null0 254
+ ip route 192.168.0.0 255.255.255.0 Null0 254
 end
 </entry>
         <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
@@ -850,7 +856,7 @@ end
 8888888888 888  888  "Y888 8888888
 -->
 
-<node name="Ext1" type="SIMPLE" subtype="IOSv" location="218,87" ipv4="192.168.0.7">
+<node name="Ext1" type="SIMPLE" subtype="IOSv" location="218,87" ipv4="192.168.1.1">
     <extensions>
         <entry key="AutoNetkit.ASN" type="Integer">2</entry>
         <entry key="config" type="string">! IOS Config generated on 2016-03-13 13:05
@@ -897,7 +903,7 @@ cdp run
 !
 interface Loopback0
   description Loopback
-  ip address 192.168.0.7 255.255.255.255
+  ip address 192.168.1.1 255.255.255.255
 !
 interface GigabitEthernet0/0
   description OOB Management
@@ -922,10 +928,11 @@ router bgp 1
   neighbor 10.1.0.2 remote-as 10
   neighbor 10.1.0.2 description eBGP to E1
   neighbor 10.1.0.2 next-hop-self
-  network 10.1.0.1 mask 255.255.255.252
-  network 192.168.0.7 mask 255.255.255.255
+  network 192.168.1.1 mask 255.255.255.255
+  network 10.1.0.0 mask 255.255.0.0
   network 10.4.0.0 mask 255.255.0.0
 !
+ip route 10.1.0.0 255.255.0.0 Null0 254
 ip route 10.4.0.0 255.255.0.0 Null0 254
 end
 </entry>
@@ -947,7 +954,7 @@ end
 8888888888 888  888  "Y888 888888888
 -->
 
-<node name="Ext2" type="SIMPLE" subtype="IOSv" location="635,87" ipv4="192.168.0.9">
+<node name="Ext2" type="SIMPLE" subtype="IOSv" location="635,87" ipv4="192.168.2.1">
     <extensions>
         <entry key="AutoNetkit.ASN" type="Integer">3</entry>
         <entry key="config" type="string">! IOS Config generated on 2016-03-13 13:05
@@ -999,7 +1006,7 @@ cdp run
 !
 interface Loopback0
   description Loopback
-  ip address 192.168.0.9 255.255.255.255
+  ip address 192.168.2.1 255.255.255.255
 !
 interface GigabitEthernet0/0
   description OOB Management
@@ -1024,10 +1031,11 @@ router bgp 2
   neighbor 10.2.0.2 remote-as 10
   neighbor 10.2.0.2 description eBGP to E3
   neighbor 10.2.0.2 next-hop-self
-  network 10.2.0.1 mask 255.255.255.252
-  network 192.168.0.9 mask 255.255.255.255
+  network 192.168.2.1 mask 255.255.255.255
+  network 10.2.0.0 mask 255.255.0.0
   network 10.4.0.0 mask 255.255.0.0
 !
+ip route 10.2.0.0 255.255.0.0 Null0 254
 ip route 10.4.0.0 255.255.0.0 Null0 254
 end
 </entry>
@@ -1049,7 +1057,7 @@ end
 8888888888 888  888  "Y888 "Y8888P"
 -->
 
-<node name="Ext3" type="SIMPLE" subtype="IOSv" location="284,385" ipv4="192.168.0.8">
+<node name="Ext3" type="SIMPLE" subtype="IOSv" location="284,385" ipv4="192.168.3.1">
     <extensions>
         <entry key="AutoNetkit.ASN" type="Integer">4</entry>
         <entry key="config" type="string">! IOS Config generated on 2016-03-13 13:05
@@ -1102,7 +1110,7 @@ cdp run
 !
 interface Loopback0
   description Loopback
-  ip address 192.168.0.8 255.255.255.255
+  ip address 192.168.3.1 255.255.255.255
 !
 interface GigabitEthernet0/0
   description OOB Management
@@ -1127,10 +1135,11 @@ router bgp 3
   neighbor 10.3.0.2 remote-as 10
   neighbor 10.3.0.2 description eBGP to E2
   neighbor 10.3.0.2 next-hop-self
-  network 10.3.0.1 mask 255.255.255.252
-  network 192.168.0.8 mask 255.255.255.255
+  network 192.168.3.1 mask 255.255.255.255
+  network 10.3.0.0 mask 255.255.0.0
   network 10.4.0.0 mask 255.255.0.0
 !
+ip route 10.3.0.0 255.255.0.0 Null0 254
 ip route 10.4.0.0 255.255.0.0 Null0 254
 end
 </entry>
