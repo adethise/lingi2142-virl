@@ -86,9 +86,9 @@ interface_ips = {
         SOUTH:   '10.1.0.1'
     },
     EXT2: {
-        EAST:    '10.3.0.1'
+        EAST:    '10.2.0.1'
     },
     EXT3: {
-        SOUTH:   '10.2.0.1'
+        SOUTH:   '10.3.0.1'
     }
 }
