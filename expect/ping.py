@@ -77,4 +77,5 @@ def test_ping(telnet_info, params):
         
 
 
-__main__()
+if __name__ == "__main__":
+    __main__()
