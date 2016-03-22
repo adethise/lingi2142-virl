@@ -7,7 +7,7 @@ from config import *
 def telnet_to_router(router_name):
     port = telnet_ports[router_name]
     print('telnet %s %s' % (telnet_ip, port))
-    spawn = pexpect.spawn('telnet %s %s' % (telnet_ip, port), timeout=1)
+    spawn = pexpect.spawn('telnet %s %s' % (telnet_ip, port), timeout=5)
     spawn.expect([r'Connected to %s' % telnet_ip])
     spawn.sendline('')
     log = open("log.txt","wb")
@@ -22,8 +22,8 @@ def send_traceroute_cmd(spawn, target_router):
     spawn.expect('VRF info:')
 
 def expect_route(spawn, router_from, router_dst, hops):
-    print('Asserting traceroute from %s to %s' % (router_from, router_dst))
-    print('Expecting: %s', '-'.join(hops))
+    print('Route to %s, expecting: %s' % (router_dst, '->'.join(hops).ljust(80)))
     send_traceroute_cmd(spawn, router_dst)
     spawn.expect('.*'.join(hops))
-    print('Pass')
+    spawn.expect('%s>' % router_from)
+    print('Success')
