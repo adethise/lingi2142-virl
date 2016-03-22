@@ -1,0 +1,18 @@
+- Topologie physique
+- Topologie OSPF
+- Topologie iBGP - 2 RR
+- Topologie eBGP - 4 AS
+- IP prefixes
+
+- Examples from config
+- GREG
+    - static routes: ip route 10.0.0.0 255.255.0.0 Null0 254
+    - trick with eBGP and same subnet.
+- Arnaud:
+    -
+- Examples tests
+    - Screens ping
+    - Screens tests trace route
+    - Screens routing tables: check for border routers what they do for their own prefixes, external prefixes,
+    - Tests interfaces?
+    - Tests poids des links?
