@@ -190,4 +190,6 @@ def traceroute_from_C3():
         ips[EXT3][SOUTH]
     ])
 
-__main__()
+
+if __name__ == "__main__":
+    __main__()
