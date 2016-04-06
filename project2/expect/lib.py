@@ -17,7 +17,7 @@ def telnet_to_router(router_name):
     return spawn
 
 def send_traceroute_cmd(spawn, target_router):
-    target_ip = loopback_ips[target_router]
+    target_ip = ips[target_router]
     spawn.send('traceroute %s\r' % target_ip)
     spawn.expect('VRF info:')
 
