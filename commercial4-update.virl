@@ -829,7 +829,6 @@ router bgp 10
    network 192.168.0.0 mask 255.255.255.0
   exit-address-family
  !
- ip route 192.168.1.0 255.255.255.0 Null0 254
  ip route 10.0.0.0 255.255.0.0 Null0 254
  ip route 192.168.0.0 255.255.255.0 Null0 254
 end
@@ -905,6 +904,22 @@ cdp run
 interface Loopback0
   description Loopback
   ip address 192.168.1.1 255.255.255.255
+!
+interface Loopback1
+  description Loopback AS1
+  ip address 10.1.1.1 255.255.255.255
+!
+interface Loopback2
+  description Loopback AS4
+  ip address 10.4.1.1 255.255.255.255
+!
+interface Loopback3
+  description Loopback AS5
+  ip address 10.5.1.1 255.255.255.255
+!
+interface Loopback4
+  description Loopback AS7
+  ip address 10.7.1.1 255.255.255.255
 !
 interface GigabitEthernet0/0
   description OOB Management
@@ -1014,6 +1029,22 @@ interface Loopback0
   description Loopback
   ip address 192.168.2.1 255.255.255.255
 !
+interface Loopback1
+  description Loopback AS2
+  ip address 10.2.1.1 255.255.255.255
+!
+interface Loopback2
+  description Loopback AS4
+  ip address 10.4.1.1 255.255.255.255
+!
+interface Loopback3
+  description Loopback AS6
+  ip address 10.6.1.1 255.255.255.255
+!
+interface Loopback4
+  description Loopback AS7
+  ip address 10.7.1.1 255.255.255.255
+!
 interface GigabitEthernet0/0
   description OOB Management
   vrf forwarding Mgmt-intf
@@ -1120,6 +1151,22 @@ cdp run
 interface Loopback0
   description Loopback
   ip address 192.168.3.1 255.255.255.255
+!
+interface Loopback1
+  description Loopback AS3
+  ip address 10.3.1.1 255.255.255.255
+!
+interface Loopback2
+  description Loopback AS4
+  ip address 10.4.1.1 255.255.255.255
+!
+interface Loopback3
+  description Loopback AS5
+  ip address 10.5.1.1 255.255.255.255
+!
+interface Loopback4
+  description Loopback AS6
+  ip address 10.6.1.1 255.255.255.255
 !
 interface GigabitEthernet0/0
   description OOB Management
