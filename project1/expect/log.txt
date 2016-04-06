@@ -1,0 +1,135 @@
+
+C3>
+C3>show ip route 10.1.1.1
+show ip route 10.1.1.1
+Routing entry for 10.1.0.0/16
+  Known via "bgp 10", distance 200, metric 0
+  Tag 1, type internal
+  Last update from 192.168.0.4 01:22:32 ago
+  Routing Descriptor Blocks:
+  * 192.168.0.4, from 192.168.0.2, 01:22:32 ago
+      Route metric is 0, traffic share count is 1
+      AS Hops 1
+      Route tag 1
+      MPLS label: none
+C3>traceroute 10.1.1.1traceroute 10.1.1.1
+Type escape sequence to abort.
+Tracing the route to 10.1.1.1
+VRF info: (vrf in name/id, vrf out name/id)
+  1 10.0.0.17 1 msec 1 msec 0 msec
+  2 10.0.0.6 1 msec 0 msec 1 msec
+  3 10.1.0.1 [AS 1] 0 msec *  1 msec
+C3>show ip route 10.2.1.1
+show ip route 10.2.1.1
+Routing entry for 10.2.0.0/16
+  Known via "bgp 10", distance 200, metric 0
+  Tag 2, type internal
+  Last update from 192.168.0.5 01:22:36 ago
+  Routing Descriptor Blocks:
+  * 192.168.0.5, from 192.168.0.2, 01:22:36 ago
+      Route metric is 0, traffic share count is 1
+      AS Hops 1
+      Route tag 2
+      MPLS label: none
+C3>traceroute 10.2.1.1traceroute 10.2.1.1
+Type escape sequence to abort.
+Tracing the route to 10.2.1.1
+VRF info: (vrf in name/id, vrf out name/id)
+  1 10.0.0.17 0 msec 1 msec 0 msec
+  2 10.0.0.10 1 msec 1 msec 1 msec
+  3 10.2.0.1 [AS 2] 1 msec *  1 msec
+C3>show ip route 10.3.1.1
+show ip route 10.3.1.1
+Routing entry for 10.3.0.0/16
+  Known via "bgp 10", distance 200, metric 0
+  Tag 3, type internal
+  Last update from 192.168.0.6 01:22:40 ago
+  Routing Descriptor Blocks:
+  * 192.168.0.6, from 192.168.0.2, 01:22:40 ago
+      Route metric is 0, traffic share count is 1
+      AS Hops 1
+      Route tag 3
+      MPLS label: none
+C3>traceroute 10.3.1.1traceroute 10.3.1.1
+Type escape sequence to abort.
+Tracing the route to 10.3.1.1
+VRF info: (vrf in name/id, vrf out name/id)
+  1 10.0.128.10 0 msec 0 msec 0 msec
+  2 10.3.0.1 [AS 3] 1 msec *  0 msec
+C3>show ip route 10.4.1.1
+show ip route 10.4.1.1
+Routing entry for 10.4.0.0/16
+  Known via "bgp 10", distance 200, metric 0
+  Tag 2, type internal
+  Last update from 192.168.0.5 01:22:44 ago
+  Routing Descriptor Blocks:
+  * 192.168.0.5, from 192.168.0.2, 01:22:44 ago
+      Route metric is 0, traffic share count is 1
+      AS Hops 1
+      Route tag 2
+      MPLS label: none
+C3>traceroute 10.4.1.1traceroute 10.4.1.1
+Type escape sequence to abort.
+Tracing the route to 10.4.1.1
+VRF info: (vrf in name/id, vrf out name/id)
+  1 10.0.0.17 0 msec 1 msec 0 msec
+  2 10.0.0.6 1 msec 1 msec 0 msec
+  3 10.1.0.1 [AS 1] 1 msec *  1 msec
+C3>show ip route 10.5.1.1
+show ip route 10.5.1.1
+Routing entry for 10.5.0.0/16
+  Known via "bgp 10", distance 200, metric 0
+  Tag 1, type internal
+  Last update from 192.168.0.4 01:22:49 ago
+  Routing Descriptor Blocks:
+  * 192.168.0.4, from 192.168.0.2, 01:22:49 ago
+      Route metric is 0, traffic share count is 1
+      AS Hops 1
+      Route tag 1
+      MPLS label: none
+C3>traceroute 10.5.1.1traceroute 10.5.1.1
+Type escape sequence to abort.
+Tracing the route to 10.5.1.1
+VRF info: (vrf in name/id, vrf out name/id)
+  1 10.0.0.17 0 msec 1 msec 0 msec
+  2 10.0.0.6 1 msec 1 msec 0 msec
+  3 10.1.0.1 [AS 1] 1 msec *  0 msec
+C3>show ip route 10.6.1.1
+show ip route 10.6.1.1
+Routing entry for 10.6.0.0/16
+  Known via "bgp 10", distance 200, metric 0
+  Tag 2, type internal
+  Last update from 192.168.0.5 01:22:53 ago
+  Routing Descriptor Blocks:
+  * 192.168.0.5, from 192.168.0.2, 01:22:53 ago
+      Route metric is 0, traffic share count is 1
+      AS Hops 1
+      Route tag 2
+      MPLS label: none
+C3>traceroute 10.6.1.1traceroute 10.6.1.1
+Type escape sequence to abort.
+Tracing the route to 10.6.1.1
+VRF info: (vrf in name/id, vrf out name/id)
+  1 10.0.0.17 0 msec 1 msec 0 msec
+  2 10.0.0.10 1 msec 1 msec 0 msec
+  3 10.2.0.1 [AS 2] 1 msec *  1 msec
+C3>show ip route 10.7.1.1
+show ip route 10.7.1.1
+Routing entry for 10.7.0.0/16
+  Known via "bgp 10", distance 200, metric 0
+  Tag 2, type internal
+  Last update from 192.168.0.5 01:22:57 ago
+  Routing Descriptor Blocks:
+  * 192.168.0.5, from 192.168.0.2, 01:22:57 ago
+      Route metric is 0, traffic share count is 1
+      AS Hops 1
+      Route tag 2
+      MPLS label: none
+C3>traceroute 10.7.1.1traceroute 10.7.1.1
+Type escape sequence to abort.
+Tracing the route to 10.7.1.1
+VRF info: (vrf in name/id, vrf out name/id)
+  1 10.0.0.17 0 msec 0 msec 1 msec
+  2 10.0.0.6 1 msec 0 msec 1 msec
+  3 10.1.0.1 [AS 1] 1 msec *  1 msec
+C3>

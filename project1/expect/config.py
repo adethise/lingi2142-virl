@@ -21,6 +21,8 @@ NE  = 'NE'
 SW  = 'SW'
 SE  = 'SE'
 
+core_routers = [C1, C2, C3]
+
 ############################
 # PORT CHANGE AT EACH STARTUP AND SHOULD UPDATED
 ############################
