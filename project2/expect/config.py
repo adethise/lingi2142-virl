@@ -21,6 +21,7 @@ NE  = 'NE'
 SW  = 'SW'
 SE  = 'SE'
 
+
 ############################
 # PORT CHANGE AT EACH STARTUP AND SHOULD UPDATED
 ############################
@@ -59,6 +60,10 @@ external_ips = {
     EXT2+EXT3:      '10.6.1.1',
     EXT1+EXT3:      '10.5.1.1'
 }
+
+ips = {}
+ips.update(loopback_ips)
+ips.update(external_ips)
 
 # INTEFACE IPS
 interface_ips = {
