@@ -16,7 +16,10 @@ def __main__():
 
     success= True
     for connexion in connexions:
-        success= test_ping(connexion, loopback_ips) and success
+        targets = {}
+        targets.update(loopback_ips)
+        targets.update(external_ips)
+        success= test_ping(connexion, targets) and success
 
     if success:
         print('PING: Test successful')

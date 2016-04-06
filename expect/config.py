@@ -25,15 +25,15 @@ SE  = 'SE'
 # PORT CHANGE AT EACH STARTUP AND SHOULD UPDATED
 ############################
 telnet_ports = {
-    C1:   17019,
-    C2:   17001,
-    C3:   17017,
-    E1:   17021,
-    E2:   17023,
-    E3:   17025,
-    EXT1: 17031,
-    EXT2: 17027,
-    EXT3: 17029
+    C1:   17000,
+    C2:   17004,
+    C3:   17002,
+    E1:   17016,
+    E2:   17014,
+    E3:   17012,
+    EXT1: 17006,
+    EXT2: 17010,
+    EXT3: 17008
 }
 
 # LOOPBACK IPS
