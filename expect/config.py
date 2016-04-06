@@ -25,15 +25,15 @@ SE  = 'SE'
 # PORT CHANGE AT EACH STARTUP AND SHOULD UPDATED
 ############################
 telnet_ports = {
-    C1:   17018,
-    C2:   17012,
-    C3:   17014,
-    E1:   17004,
-    E2:   17006,
-    E3:   17008,
-    EXT1: 17000,
-    EXT2: 17002,
-    EXT3: 17010
+    C1:   17004,
+    C2:   17000,
+    C3:   17002,
+    E1:   17006,
+    E2:   17008,
+    E3:   17010,
+    EXT1: 17016,
+    EXT2: 17012,
+    EXT3: 17014
 }
 
 # LOOPBACK IPS
@@ -47,6 +47,17 @@ loopback_ips = {
     EXT1: '192.168.1.1',
     EXT2: '192.168.2.1',
     EXT3: '192.168.3.1'
+}
+
+# EXTERNAL ADVERTISED PREFIXES
+external_prefixes = {
+    EXT1:           '10.1.0.0',
+    EXT2:           '10.2.0.0',
+    EXT3:           '10.3.0.0',
+    EXT1+EXT2+EXT3: '10.4.0.0',
+    EXT1+EXT2:      '10.7.0.0',
+    EXT2+EXT3:      '10.6.0.0',
+    EXT1+EXT3:      '10.5.0.0'
 }
 
 # INTEFACE IPS
