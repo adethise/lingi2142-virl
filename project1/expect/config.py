@@ -27,15 +27,15 @@ core_routers = [C1, C2, C3]
 # PORT CHANGE AT EACH STARTUP AND SHOULD UPDATED
 ############################
 telnet_ports = {
-    C1:   17000,
-    C2:   17004,
-    C3:   17002,
-    E1:   17016,
-    E2:   17014,
-    E3:   17012,
-    EXT1: 17006,
-    EXT2: 17010,
-    EXT3: 17008
+    C1:   17036,
+    C2:   17040,
+    C3:   17038,
+    E1:   17052,
+    E2:   17050,
+    E3:   17048,
+    EXT1: 17042,
+    EXT2: 17046,
+    EXT3: 17044
 }
 
 # LOOPBACK IPS

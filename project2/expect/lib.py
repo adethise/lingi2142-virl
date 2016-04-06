@@ -20,6 +20,7 @@ def send_traceroute_cmd(spawn, target_router):
     send_traceroute_cmd_to_ip(loopback_ips[target_router])
 
 def send_traceroute_cmd_to_ip(spawn, target_ip):
+    target_ip = ips[target_router]
     spawn.send('traceroute %s\r' % target_ip)
     spawn.expect('VRF info:')
 
