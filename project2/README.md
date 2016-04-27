@@ -11,6 +11,10 @@
 
 ### SegmentRouting
 - **With segment routing, we are sure that we can implement the blue path**. Using "global segments", the packet will follow the shortest path to the node, and will use ECMP if present. So, we simply have to make sure that C1-C2-C3 and C1-C3 have the same total cost and activate ECMP.
+- Advantage:
+--* No extra protocole (RSVP-TE), we have only one intradomain protocol to operate: IGP.
+--* There is no midpoint state (n^2 scale in RSVP-TE).
+--* Support for Native ECMP
 - BUT, we believe segment routing is not implemented on Cisco routers.
 - However, we can distribute the labels by “hand” on the routers to **simulate segment routing**. Only 2 paths to setup on a small number of routers, this should not take too long.
 - How to configure the ingress router to stack the proper set of labels on incoming packets? Also, how to specify on which packets it should be stacked? based on the IP-Address/Interface? And how to tell it to use basic IP fowarding for the rest of the packets.
