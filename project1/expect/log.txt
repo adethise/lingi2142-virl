@@ -1,24 +1,0 @@
-
-
-C3>
-C3>traceroute 192.168.1.1traceroute 192.168.1.1
-Type escape sequence to abort.
-Tracing the route to 192.168.1.1
-VRF info: (vrf in name/id, vrf out name/id)
-  1 10.0.0.17 0 msec 1 msec 0 msec
-  2 10.0.0.6 1 msec 1 msec 0 msec
-  3 10.1.0.1 [AS 1] 1 msec *  1 msec
-C3>traceroute 192.168.2.1traceroute 192.168.2.1
-Type escape sequence to abort.
-Tracing the route to 192.168.2.1
-VRF info: (vrf in name/id, vrf out name/id)
-  1 10.0.0.17 0 msec 0 msec 0 msec
-  2 10.0.0.10 1 msec 1 msec 0 msec
-  3 10.2.0.1 [AS 2] 0 msec *  1 msec
-C3>traceroute 192.168.3.1traceroute 192.168.3.1
-Type escape sequence to abort.
-Tracing the route to 192.168.3.1
-VRF info: (vrf in name/id, vrf out name/id)
-  1 10.0.128.10 0 msec 0 msec 0 msec
-  2 10.3.0.1 [AS 3] 0 msec *  0 msec
-C3>

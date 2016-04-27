@@ -23,9 +23,9 @@ SE  = 'SE'
 
 core_routers = [C1, C2, C3]
 
-############################
-# PORT CHANGE AT EACH STARTUP AND SHOULD UPDATED
-############################
+####################################################
+# PORT CHANGE AT EACH STARTUP AND SHOULD UPDATED   #
+####################################################
 telnet_ports = {
     C1:   17036,
     C2:   17040,

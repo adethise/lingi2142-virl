@@ -29,8 +29,9 @@ Y88b  d88P   888
 
 hostname C1
 boot-start-marker
+! if we need to add boot commands
 boot-end-marker
-!
+! Virtual Routing and Forwarding
 vrf definition Mgmt-intf
 !
  address-family ipv4
@@ -40,25 +41,27 @@ vrf definition Mgmt-intf
  exit-address-family
 !
 !
-!
+! disable aaa (aaa is for security, it controls who is allowed access the network server: Authentication Authorization Accounting)
 no aaa new-model
 !
 !
+! cisco express forwarding (is an advanced layer 3 switching technology)
 ip cef
 ipv6 unicast-routing
 ipv6 cef
 !
 !
-service timestamps debug datetime msec
-service timestamps log datetime msec
+service timestamps debug datetime msec ! write timestamp in debugs
+service timestamps log datetime msec ! write timestamp in logs
 no service password-encryption
 no service config
-enable password cisco
-ip classless
-ip subnet-zero
-no ip domain lookup
-ip domain name virl.info
-crypto key generate rsa modulus 768
+enable password cisco ! set the password : cisco
+ip classless ! do not use ip class in order to avoid ip address waste (divide subnet into class even if a subnet needs 2 addresses)
+ip subnet-zero ! when we divide addresses into subnet, this command allow us to use the first and the last subnet
+no ip domain lookup ! desactivate dns research inside a rooter
+ip domain name virl.info ! set our virl domain
+! for crypto security authentification
+crypto key generate rsa modulus 768 
 ip ssh server algorithm authentication password
 username cisco privilege 15 secret cisco
 line vty 0 4
@@ -71,11 +74,12 @@ line con 0
 !
 cdp run
 !
-!
+! Set the general loopback0 interface, used, for an example, by ibg (avoid using interface addresses instead)
 interface Loopback0
   description Loopback
   ip address 192.168.0.1 255.255.255.255
 !
+! Management interface (this interface is to allow users to perform management tasks on the router)
 interface GigabitEthernet0/0
   description OOB Management
   vrf forwarding Mgmt-intf
@@ -88,12 +92,12 @@ interface GigabitEthernet0/0
 !
 interface GigabitEthernet0/1
   description to E1
-  ip address 10.0.0.5 255.255.255.252
+  ip address 10.0.0.5 255.255.255.252 ! set ip address for that interface
   cdp enable
-  ip ospf cost 5
-  duplex full
+  ip ospf cost 5 ! set the igp cost
+  duplex full ! use the full link bandwith and not the half as by default
   speed auto
-  no shutdown
+  no shutdown ! activate the port
 !
 interface GigabitEthernet0/2
   description to C3
@@ -122,6 +126,7 @@ interface GigabitEthernet0/4
   speed auto
   no shutdown
 !
+! setup ospf
 router ospf 1
   network 192.168.0.1 0.0.0.0 area 0
   log-adjacency-changes
@@ -131,9 +136,10 @@ router ospf 1
   network 10.0.0.12 0.0.0.3 area 0
   network 10.0.0.8 0.0.0.3 area 0
 !
+! configure bgp neighors
 router bgp 10
   bgp router-id 192.168.0.1
-  no synchronization
+  no synchronization ! This prevents BGP from validating iBGP routes in IGP 
   ! ibgp
   neighbor 192.168.0.2 remote-as 10
   neighbor 192.168.0.2 description iBGP peer C2
@@ -829,7 +835,6 @@ router bgp 10
    network 192.168.0.0 mask 255.255.255.0
   exit-address-family
  !
- ip route 192.168.1.0 255.255.255.0 Null0 254
  ip route 10.0.0.0 255.255.0.0 Null0 254
  ip route 192.168.0.0 255.255.255.0 Null0 254
 end
@@ -906,6 +911,22 @@ interface Loopback0
   description Loopback
   ip address 192.168.1.1 255.255.255.255
 !
+interface Loopback1
+  description Loopback AS1
+  ip address 10.1.1.1 255.255.255.255
+!
+interface Loopback2
+  description Loopback AS4
+  ip address 10.4.1.1 255.255.255.255
+!
+interface Loopback3
+  description Loopback AS5
+  ip address 10.5.1.1 255.255.255.255
+!
+interface Loopback4
+  description Loopback AS7
+  ip address 10.7.1.1 255.255.255.255
+!
 interface GigabitEthernet0/0
   description OOB Management
   vrf forwarding Mgmt-intf
@@ -932,10 +953,14 @@ router bgp 1
   network 192.168.1.0 mask 255.255.255.0
   network 10.1.0.0 mask 255.255.0.0
   network 10.4.0.0 mask 255.255.0.0
+  network 10.5.0.0 mask 255.255.0.0
+  network 10.7.0.0 mask 255.255.0.0
 !
 ip route 192.168.1.0 255.255.255.0 Null0 254
 ip route 10.1.0.0 255.255.0.0 Null0 254
 ip route 10.4.0.0 255.255.0.0 Null0 254
+ip route 10.5.0.0 255.255.0.0 Null0 254
+ip route 10.7.0.0 255.255.0.0 Null0 254
 end
 </entry>
             <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
@@ -1010,6 +1035,22 @@ interface Loopback0
   description Loopback
   ip address 192.168.2.1 255.255.255.255
 !
+interface Loopback1
+  description Loopback AS2
+  ip address 10.2.1.1 255.255.255.255
+!
+interface Loopback2
+  description Loopback AS4
+  ip address 10.4.1.1 255.255.255.255
+!
+interface Loopback3
+  description Loopback AS6
+  ip address 10.6.1.1 255.255.255.255
+!
+interface Loopback4
+  description Loopback AS7
+  ip address 10.7.1.1 255.255.255.255
+!
 interface GigabitEthernet0/0
   description OOB Management
   vrf forwarding Mgmt-intf
@@ -1036,10 +1077,14 @@ router bgp 2
   network 192.168.2.0 mask 255.255.255.0
   network 10.2.0.0 mask 255.255.0.0
   network 10.4.0.0 mask 255.255.0.0
+  network 10.6.0.0 mask 255.255.0.0
+  network 10.7.0.0 mask 255.255.0.0
 !
 ip route 192.168.2.0 255.255.255.0 Null0 254
 ip route 10.2.0.0 255.255.0.0 Null0 254
 ip route 10.4.0.0 255.255.0.0 Null0 254
+ip route 10.6.0.0 255.255.0.0 Null0 254
+ip route 10.7.0.0 255.255.0.0 Null0 254
 end
 </entry>
         <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
@@ -1113,6 +1158,22 @@ interface Loopback0
   description Loopback
   ip address 192.168.3.1 255.255.255.255
 !
+interface Loopback1
+  description Loopback AS3
+  ip address 10.3.1.1 255.255.255.255
+!
+interface Loopback2
+  description Loopback AS4
+  ip address 10.4.1.1 255.255.255.255
+!
+interface Loopback3
+  description Loopback AS5
+  ip address 10.5.1.1 255.255.255.255
+!
+interface Loopback4
+  description Loopback AS6
+  ip address 10.6.1.1 255.255.255.255
+!
 interface GigabitEthernet0/0
   description OOB Management
   vrf forwarding Mgmt-intf
@@ -1139,10 +1200,14 @@ router bgp 3
   network 192.168.3.0 mask 255.255.255.0
   network 10.3.0.0 mask 255.255.0.0
   network 10.4.0.0 mask 255.255.0.0
+  network 10.5.0.0 mask 255.255.0.0
+  network 10.6.0.0 mask 255.255.0.0
 !
 ip route 192.168.3.0 255.255.255.0 Null0 254
 ip route 10.3.0.0 255.255.0.0 Null0 254
 ip route 10.4.0.0 255.255.0.0 Null0 254
+ip route 10.5.0.0 255.255.0.0 Null0 254
+ip route 10.6.0.0 255.255.0.0 Null0 254
 end
 </entry>
             <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
