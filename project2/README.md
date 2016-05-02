@@ -22,4 +22,5 @@
 
 #### Documentation
 - Explain how to configure label distribution for segment routing: https://cisco.app.box.com/s/2k3hofh7fzqv2l1f0acec35hbz5qtlrn.
+- Paper on segment routing http://www.tmcnet.com/tmc/whitepapers/documents/whitepapers/2015/11524-fast-reroute-with-segment-routing-extending-fast-reroute.pdf
 - How to configure the path at the ingress router?
