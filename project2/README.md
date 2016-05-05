@@ -24,3 +24,4 @@
 - Explain how to configure label distribution for segment routing: https://cisco.app.box.com/s/2k3hofh7fzqv2l1f0acec35hbz5qtlrn.
 - Paper on segment routing http://www.tmcnet.com/tmc/whitepapers/documents/whitepapers/2015/11524-fast-reroute-with-segment-routing-extending-fast-reroute.pdf
 - Example configuration https://www.cisco.com/c/en/us/td/docs/routers/asr9000/software/segment-routing/configuration/guide/b-seg-routing-cg-asr9k/b-seg-routing-cg-asr9k_chapter_0101.html
+- if we want to use a server mapping : https://cisco.app.box.com/s/mv72k0w1vt1as9fwknfzvngiasfxv0c0
