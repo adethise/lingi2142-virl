@@ -43,7 +43,7 @@ def traceroute_from_Ext2_2():
         ips[E3][EAST],
         ips[EXT3][SOUTH]
     ],
-    hosts_alt = [
+    hops_alt = [
         ips[E2][SW],
         ips[C1][SE],
         ips[C2][WEST],
