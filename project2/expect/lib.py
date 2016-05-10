@@ -24,9 +24,12 @@ def send_traceroute_cmd_to_ip(spawn, target_ip):
     spawn.send('traceroute %s\r' % target_ip)
     spawn.expect('VRF info:')
 
-def expect_route(spawn, router_from, router_dst, hops):
+def expect_route(spawn, router_from, router_dst, hops, hops_alt=None):
     print((('Route to %s' % router_dst).ljust(20) + ('Expecting: %s' % '->'.join(hops)).ljust(70)), end='')
     send_traceroute_cmd(spawn, router_dst)
-    spawn.expect('.*'.join(hops))
+    if hops_alt == None :
+        spawn.expect('.*'.join(hops))
+    else :
+        spawn.expect(['.*'.join(hops), '.*'.join(hops_alt)])
     spawn.expect('%s>' % router_from)
     print('Success')
